@@ -1,0 +1,37 @@
+Source code
++++++++++++
+data_types.f90              - common data types and parameters
+dq_coeff.f90                - differential quadurature to calculate weighting
+                              coefficients
+hyper_dual.f90              - hyper-dual number routines
+ldl.f90                     - LDL decomposition
+Makefile                    - makefile for all examples
+solve.f90                   - main solving routine 
+var_prec_extra.f90          - support code for arbitrary precision routines
+var_prec.f90                - arbitrary precision routines
+vector.f90                  - k-fold high precision dot product function
+
+examples
+--------
+cylinder.f90                - source code for flow around cylinder example
+cylinder_input.txt          - input for flow around cylinder example
+cylinder_output.txt         - output for flow around cylinder example
+poisson.f90                 - source code for Poisson
+                              example with random internal
+                              points
+poisson_output.txt          - output from Poisson example
+                              with random internal points
+poisson_regular.f90         - source code for Poisson 
+                              example with regular internal
+                              points
+poisson_regular_output.txt  - output from Poisson example 
+                              with regular internal
+                              points
+
+Additional files
+----------------
+manifest.txt                - list of files
+readme.txt                  - instructions
+license.txt                 - GNU General Public License 
+
+
