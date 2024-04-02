@@ -79,5 +79,5 @@ call calc_dq_coeff(target_point,points,derivative,coeff,stat, &
 
 CITATION
 
-Jason Roberts, Meshless weighting coefficients for arbitrary nodes: the efficient computation to machine precision using hyper-dual numbers, Journal of Scientific Computing, (submitted)
+Jason Roberts, Meshless weighting coefficients for arbitrary nodes: the efficient computation to machine precision using hyper-dual numbers, Advances in Engineering Software, (submitted)
 
