@@ -1,8 +1,8 @@
-#PROJECT DESCRIPTION#
+# PROJECT DESCRIPTION
 
 dq_coeff is a package of FORTRAN source code to calculate the finite difference weighting coefficients for arbitrary sets of points.  The method uses a self-contained arbitrary precision library and Taylor series acceleration via hyper-dual numbers.  
 
-##BUILDING##
+## BUILDING
 
 The code has been tested on linux systems using gfortan versions 7.3.0 and 10.2.1.
 
@@ -10,7 +10,7 @@ Edit the first four lines of the included Makefile to specify your fortran compi
 
 type "make" this will build the dq_coff routine, all its dependencies and seven example programs
 
-##EXAMPLES##
+## EXAMPLES
 
 Seven example programs are included from the Advances in Engineering Software manuscript.  All the examples source code, input and output files are included in the examples subdirectory.  Note the six of the examples (all except the hexagonal finite difference solution for the triangular annulus heat flow example) use randomly generated sets of points, so if your compiler produces a different sequence of random numbers, your output will differ.  
 
@@ -40,11 +40,11 @@ triangle_64bit_vp
 triangle_finite_difference
 ./run_fd.csh > fd_summary.txt will output results to the fd_summary.txt file and the results are shown in Figure B.1 of the Advances in Engineering Software manuscript
 
-##USAGE##
+## USAGE
 
 Examples of usage are provided in six of examples above (excluding the hexagonal finite difference solution for the triangular annulus heat flow example).  A complete description of the FORTRAN interface and pseudo-code examples is given in Appendix A of the Advances in Engineering Software manuscript.
 
-##CITATION##
+## CITATION
 
 Jason Roberts, Meshless weighting coefficients for arbitrary nodes: the efficient computation to machine precision using hyper-dual numbers, Advances in Engineering Software, (submitted)
 
