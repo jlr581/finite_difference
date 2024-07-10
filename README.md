@@ -1,83 +1,50 @@
-PROJECT DESCRIPTION
+#PROJECT DESCRIPTION#
 
 dq_coeff is a package of FORTRAN source code to calculate the finite difference weighting coefficients for arbitrary sets of points.  The method uses a self-contained arbitrary precision library and Taylor series acceleration via hyper-dual numbers.  
 
-BUILDING
+##BUILDING##
 
 The code has been tested on linux systems using gfortan versions 7.3.0 and 10.2.1.
 
-Edit the first four lines of the included Makefile to specify your fortran compiler, compiler flags and the location of the system lapack library (only needed for the flow around a cylinder example for solving the coupled fluid dynamics equations).
+Edit the first four lines of the included Makefile to specify your fortran compiler, compiler flags and the location of the system lapack library (only needed for the flow around a cylinder and triangular annulus heat conduction examples for solving the coupled fluid dynamics/heat flow equations).
 
-type "make" this will build the dq_coff routine, all its dependencies and three example programs
+type "make" this will build the dq_coff routine, all its dependencies and seven example programs
 
-EXAMPLES
+##EXAMPLES##
 
-Three example programs are included from the Journal of Scientific Computing manuscript.  All the examples source code, input and output files are included in the examples subdirectory.  Note the two of the examples (cylinder and poisson) use randomly generated sets of points, so if your compiler produces a different sequence of random numbers, your output will differ.  poisson_regular is provided as an example without random numbers.
+Seven example programs are included from the Advances in Engineering Software manuscript.  All the examples source code, input and output files are included in the examples subdirectory.  Note the six of the examples (all except the hexagonal finite difference solution for the triangular annulus heat flow example) use randomly generated sets of points, so if your compiler produces a different sequence of random numbers, your output will differ.  
 
-Creeping flow around a cylinder: 
+The example subdirectories ending in \_vp denote the standard (variable precision) implementation, while subdirectories ending in \_native are for modified versions of the code that do not use variable precision numbers to represent the hyper-dual number components, and results from these versions of the code cannot guarantee accurate results.
 
-./cylinder < cylinder_input.txt 
+**Creeping flow around a cylinder:**
+cylinder_32bit_vp
+./run_cylinder_32bit.zsh will output results to the cylinder_32bit_summary.txt file and the results are shown in Figure 4c of the Advances in Engineering Software manuscript
 
-Poisson equation: For a random set of points
+cylinder_64bit_vp
+./run_cylinder_64bit.zsh will output results to the cylinder_64bit_summary.txt file and the results are shown in Figure 4b of the Advances in Engineering Software manuscript
 
-./poisson  
+**Poisson equation:**
+poisson_64bit_vp
+./run_64bit.zsh > poisson_64bit_summary.txt will output results to the poisson_64bit_summary.txt file and the results are shown in Figure 3b of the Advances in Engineering Software manuscript
 
-While for a regular set of points
+poisson_64bit_native
+./run_64bit.zsh > poisson_64bit_summary.txt will output results to the poisson_64bit_summary.txt file and the results are shown in Figure 3b of the Advances in Engineering Software manuscript
 
-./poisson_regular
+poisson_128bit_native
+./run_128bit.zsh > poisson_128bit_summary.txt will output results to the poisson_128bit_summary.txt file and the results are shown in Figure 3b of the Advances in Engineering Software manuscript
 
-USAGE
+**Heat condition in a triangular annulus:**
+triangle_64bit_vp
+./run_triangle.zsh will output results to the triangle_summary.txt file and the results are shown in Figure 5b of the Advances in Engineering Software manuscript
 
-Examples of usage are provided in the three examples above.  In general FORTRAN pseudo code is
+triangle_finite_difference
+./run_fd.csh > fd_summary.txt will output results to the fd_summary.txt file and the results are shown in Figure B.1 of the Advances in Engineering Software manuscript
 
-use dq_coeff_mod ! routines to calculate weighting coefficients
+##USAGE##
 
-use vector_mod   ! routines for accurate dot-product evaluation
+Examples of usage are provided in six of examples above (excluding the hexagonal finite difference solution for the triangular annulus heat flow example).  A complete description of the FORTRAN interface and pseudo-code examples is given in Appendix A of the Advances in Engineering Software manuscript.
 
-
-! code to find N points of interest
-
-call calc_dq_coeff(target_point,points,derivative,coeff,stat, &
-
-    epsilon2_step,set_epsilon2,required_epsilon2,required_precision, &
-
-    initial_epsilon2,initial_precision,taylor_series))
-
-
-! INPUTS
-
-! target_point : double(3) vector containing the (x,y,z) point of interest
-
-! points : double (N,3) array containing the points being used to approximate the derivative at "target_point"
-
-! derivative : vector of character strings containing M derivatives requested, can include "interp", "d_dx", "d_dy", "d_dz", "d2_dx2", "d2_dxdy", "d2_dxdz", "d2_dy2", "d2_dydz" and "d2_dz2"
-
-! OUTPUTS
-
-! coeff : double (N,M) array of finite difference weighting coefficients for M derivatives at N points
-
-! stat : integer status, 0=no error, 1=required precision exceeded available arbitrary precision
-
-! OPTIONAL INPUT
-
-! epsilon2_step=double change from default factor of 4 when refining epsilon2
-
-! set_epsilon2=double use a fixed value of epsilon2 without iteration to the asymptotic limit of epsilon2 -> infinity
-
-! initial_epsilon2=double change from default starting value for epsilon2 iteration
-
-! initial_precision=integer change from default starting arbitrary precision number of mantissa words for precision iteration
-
-! taylor_series=integer choose fixed order of Taylor series expansion, value choices are 0 (no Taylor series), 1, 2 or 3.
-
-! OPTIONAL OUTPUT
-
-! required_epsilon2=double value of epsilon2 required for iterative convergence
-
-! required_precision=integer number of mantissa words required for arbitrary precision iterative convergence
-
-
-CITATION
+##CITATION##
 
 Jason Roberts, Meshless weighting coefficients for arbitrary nodes: the efficient computation to machine precision using hyper-dual numbers, Advances in Engineering Software, (submitted)
 

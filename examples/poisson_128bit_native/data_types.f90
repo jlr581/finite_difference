@@ -22,7 +22,7 @@ module data_types_mod
 implicit none
 
 integer, parameter :: int_kind= SELECTED_INT_KIND(10)
-integer, parameter :: real_kind= SELECTED_REAL_KIND(10, 100)
+integer, parameter :: real_kind= SELECTED_REAL_KIND(20, 100)
 integer, parameter :: real_32bit_kind= SELECTED_REAL_KIND(4, 10)
 
 integer, parameter :: var_prec_max=20
@@ -57,7 +57,7 @@ integer, parameter :: epsilon2_default(100)=reshape( (/ &
   25,28,28,32,38,35,33,33,31,33,32,35,32,33,34,30,35,35,33,33,32,33,33,32,&
   33,30,25 /),shape(epsilon2_default))
 
-real (kind=real_kind), parameter  :: log2r=0.69314718055994528623d+00
+real (kind=real_kind), parameter  :: log2r=log(real(2,kind=real_kind))
 type (var_prec), parameter :: vp_one=var_prec((/1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0/),1,0,1)
 type (var_prec), parameter :: vp_zero=var_prec((/0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0/),0,0,1)
 type (var_prec) :: log2=var_prec( (/780414346020669,1014559829342592, &

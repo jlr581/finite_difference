@@ -25,7 +25,7 @@ use var_prec_extra_mod
 implicit none
 
 interface assignment (=)
-  module procedure real_to_vp, vp_to_real
+  module procedure real_to_vp, vp_to_real, vp_to_r4 
 end interface
 
 interface operator (+)
@@ -82,6 +82,17 @@ real (kind=real_kind), intent(out) :: a
 a=real(b%words(2),kind=real_kind)/var_prec_base
 a=a+b%words(1)
 a=b%sgn*a*var_prec_base_real**b%expn
+
+end subroutine
+
+subroutine vp_to_r4(a,b)
+
+type (var_prec), intent(in) :: b
+real (kind=real_32bit_kind), intent(out) :: a
+
+a=real(b%words(2),kind=real_32bit_kind)/var_prec_base
+a=a+real(b%words(1),kind=real_32bit_kind)
+a=b%sgn*a*real(var_prec_base_real,kind=real_32bit_kind)**b%expn
 
 end subroutine
 

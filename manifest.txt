@@ -11,27 +11,89 @@ var_prec_extra.f90          - support code for arbitrary precision routines
 var_prec.f90                - arbitrary precision routines
 vector.f90                  - k-fold high precision dot product function
 
-examples
---------
-cylinder.f90                - source code for flow around cylinder example
-cylinder_input.txt          - input for flow around cylinder example
-cylinder_output.txt         - output for flow around cylinder example
-poisson.f90                 - source code for Poisson
-                              example with random internal
-                              points
-poisson_output.txt          - output from Poisson example
-                              with random internal points
-poisson_regular.f90         - source code for Poisson 
-                              example with regular internal
-                              points
-poisson_regular_output.txt  - output from Poisson example 
-                              with regular internal
-                              points
+examples/cylinder_32bit_vp
+--------------------------
+cylinder_32bit.f90          - source code for flow around cylinder example 
+                              using variable precision and weighting 
+                              coefficients accurate to IEEE 32-bit precision
+cylinder_32bit_summary.txt  - output from run_cylinder_32bit.zsh
+run_cylinder_32bit.zsh      - z-shell script for generating results shown in 
+                              Figure 4c of the Advances in Engineering Software
+                              manuscript
+
+examples/cylinder_64bit_vp
+--------------------------
+cylinder_64bit.f90          - source code for flow around cylinder example 
+                              using variable precision and weighting 
+                              coefficients accurate to IEEE 64-bit precision
+cylinder_64bit_summary.txt  - output from run_cylinder_64bit.zsh
+run_cylinder_32bit.zsh      - z-shell script for generating results shown in 
+                              Figure 4b of the Advances in Engineering Software
+                              manuscript
+
+examples/poisson_128bit_native
+------------------------------
+data_types.f90              - common data types and parameters
+dq_coeff.f90                - differential quadurature to calculate weighting
+                              coefficients
+hyper_dual.f90              - hyper-dual number routines at 128-bit IEEE 
+                              precision 
+ldl.f90                     - LDL decomposition
+poisson_128bit_summary.txt  - output from run_128bit.zsh
+poisson.f90                 - source code for Poisson equation example
+run_128bit.zsh              - z-shell script for generating results shown in 
+                              Figure 3b of the Advances in Engineering Software
+                              manuscript
+solve.f90                   - main solving routine 
+vector.f90                  - k-fold high precision dot product function
+
+examples/poisson_64bit_native
+-----------------------------
+data_types.f90              - common data types and parameters
+dq_coeff.f90                - differential quadurature to calculate weighting
+                              coefficients
+hyper_dual.f90              - hyper-dual number routines at 64-bit IEEE 
+                              precision 
+ldl.f90                     - LDL decomposition
+poisson_64bit_summary.txt   - output from run_64bit.zsh
+poisson.f90                 - source code for Poisson equation example
+run_64bit.zsh               - z-shell script for generating results shown in 
+                              Figure 3b of the Advances in Engineering Software
+                              manuscript
+solve.f90                   - main solving routine 
+vector.f90                  - k-fold high precision dot product function
+
+examples/poisson_64bit_vp
+-------------------------
+poisson_64bit_summary.txt   - output from run_64bit.zsh
+poisson.f90                 - source code for Poisson equation example
+run_64bit.zsh               - z-shell script for generating results shown in 
+                              Figure 3b of the Advances in Engineering Software
+                              manuscript
+
+examples/triangle_64bit_vp
+--------------------------
+run_triangle.zsh            - z-shell script for generating results shown in 
+                              Figure 5b of the Advances in Engineering Software
+                              manuscript
+triangle.f90                - source code for triangular annulus heat
+                              conduction example
+triangle_summary.txt        - output from run_triangle.zsh
+
+examples/triangle_finite_difference
+-----------------------------------
+fd_summary.txt              - output from run_fd.csh
+fd.f90                      - source code for hexagonal finite difference
+                              solution of triangular annulus heat
+                              conduction example
+run_fd.csh                  - c-shell script for generating results shown in 
+                              Figure B.1 of the Advances in Engineering
+                              Software manuscript
 
 Additional files
 ----------------
 manifest.txt                - list of files
-readme.txt                  - instructions
+README.md                   - markdown overview of the software package
 license.txt                 - GNU General Public License 
 
 
