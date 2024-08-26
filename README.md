@@ -46,5 +46,5 @@ Examples of usage are provided in six of examples above (excluding the hexagonal
 
 ## CITATION
 
-Jason Roberts, Meshless weighting coefficients for arbitrary nodes: the efficient computation to machine precision using hyper-dual numbers, Advances in Engineering Software, (submitted)
+Jason Roberts, Meshless weighting coefficients for arbitrary nodes: the efficient computation to machine precision using hyper-dual numbers, Advances in Engineering Software, 2024, doi:10.1016/j.advengsoft.2024.103753
 
